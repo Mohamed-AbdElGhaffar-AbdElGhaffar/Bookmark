@@ -3,6 +3,7 @@ var siteURL = window.document.getElementById("siteURL");
 var massage = window.document.getElementById("massage");
 
 var arr = [];
+var test = true;
 
 if(localStorage.getItem("arr") != null){
     arr = JSON.parse(localStorage.getItem("arr"))
@@ -12,19 +13,32 @@ if(localStorage.getItem("arr") != null){
 function btnSubmit(){
 
     if(validate(siteName, nameRegex) == true && validate(siteURL, URLRegex) == true){
-        var product={
-            siteName: siteName.value,
-            siteURL: siteURL.value
+        
+        for(var i=0;i<arr.length;i++){
+            if(siteName.value == arr[i].siteName){
+                test = false;
+            }
         }
-        arr.push(product);
-        localStorage.setItem("arr", JSON.stringify(arr))
-    
-        display();
-        clearInput();
-        siteName.classList.remove("is-valid");
-        siteURL.classList.remove("is-valid");
+        if(test==true){
+            var product={
+                siteName: siteName.value,
+                siteURL: siteURL.value
+            }
+            arr.push(product);
+            localStorage.setItem("arr", JSON.stringify(arr))
+            display();
+            clearInput();
+            siteName.classList.remove("is-valid");
+            siteURL.classList.remove("is-valid");
+        }else{
+            window.document.getElementById("Site-Name-Validate").innerHTML=`<i class="fa-regular fa-circle-right p-2"></i>Site Name should not be repeated`
+            massage.classList.replace("d-none", "d-flex");
+            test = true;
+        }
+        
     }else{
-        massage.classList.replace("d-none", "d-flex")
+        window.document.getElementById("Site-Name-Validate").innerHTML=`<i class="fa-regular fa-circle-right p-2"></i>Site name must contain at least 3 characters`
+        massage.classList.replace("d-none", "d-flex");
     }
 
 }
