@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/bookmark.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div class="container py-5">
+        <div class="d-flex justify-content-center align-items-center">
+            <h1>Bookmarker</h1>
+        </div>
+
+        <div class="p-3 py-4 mt-5 Form">
+            <div class="d-flex justify-content-center align-items-center">
+                <h2>
+                    <i class="fa-solid fa-bookmark"></i>
+                    Bookmark your favorite sites
+                    <i class="fa-solid fa-bookmark"></i>
+                </h2>
+            </div>
+            <label for="siteName" class="pb-2 fw-semibold mt-4 fw-bold">
+                <i class="fa-solid fa-book-bookmark pe-2"></i>
+                Site Name
+            </label>
+            <input type="text" id="siteName" onkeyup="validate(siteName, nameRegex)" placeholder="Bookmark Name" class="form-control ">
+            <label for="siteURL" class="pb-2 fw-semibold mt-3 fw-bold">
+                <i class="fa-solid fa-link pe-2"></i>
+                Site URL
+            </label>
+            <input type="text" id="siteURL" onkeyup="validate(siteURL, URLRegex)" placeholder="Website URL" class="form-control ">
+            <div class="d-flex justify-content-center align-items-center">
+                <button onclick="btnSubmit()" class="btn Submit  px-5 mt-4" >Submit</button>
+            </div>
+        </div>
+
+        <table class="table table-striped mt-5 text-center">
+            <thead>
+                <th>Index</th>
+                <th>Website Name</th>
+                <th>Visit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody id="view">
+                
+            </tbody>
+        </table>
+        
+        
+
+    </div>
+
+    <div class="massage w-100 h-100 d-none justify-content-center align-items-center" id="massage">
+        <div class="massage-1 bg-white p-4 rounded-2 shadow-lg">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                    <span class="rounded-circle "></span>
+                    <span class="rounded-circle mx-2"></span>
+                    <span class="rounded-circle "></span>
+                </div>
+                <button class="btn  pt-0 border-0" onclick="closeMassage()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p>Site Name or Url is not valid, Please follow the rules below :</p>
+            <h6><i class="fa-regular fa-circle-right p-2"></i>Site name must contain at least 3 characters</h6> 
+            <h6><i class="fa-regular fa-circle-right p-2"></i>Site URL must be a valid one</h6> 
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
